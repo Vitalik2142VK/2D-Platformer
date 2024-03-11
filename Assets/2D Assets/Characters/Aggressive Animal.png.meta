@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d75b835f5c5bf544aadcaab10b956ea
-      internalID: 974810621
+      spriteID: 128d45aff6c7c8143a1d7a29f3210557
+      internalID: 1479610394
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,8 @@ TextureImporter:
       name: Aggressive Animal_1
       rect:
         serializedVersion: 2
-        x: 33
-        y: 102
+        x: 36
+        y: 103
         width: 26
         height: 23
       alignment: 7
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67f1757f94db58e469a69866cdcca726
-      internalID: 142896613
+      spriteID: e75ff1552beabf64497a7700716d0230
+      internalID: -961428729
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b418364b59706db48a7ccd47bc500632
-      internalID: 1254710969
+      spriteID: 19477aec528ee954ba43c42e96611003
+      internalID: -1199038082
       vertices: []
       indices: 
       edges: []
@@ -176,8 +176,8 @@ TextureImporter:
       name: Aggressive Animal_3
       rect:
         serializedVersion: 2
-        x: 32
-        y: 79
+        x: 36
+        y: 77
         width: 26
         height: 20
       alignment: 7
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d79290be0b581024cb077666d0d84f8c
-      internalID: 483801816
+      spriteID: 94945bffecb6fd7468e83d5cd9596c01
+      internalID: -26350728
       vertices: []
       indices: 
       edges: []
@@ -197,8 +197,8 @@ TextureImporter:
       name: Aggressive Animal_4
       rect:
         serializedVersion: 2
-        x: 60
-        y: 76
+        x: 67
+        y: 77
         width: 26
         height: 23
       alignment: 7
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9901420c1ba3c5845a411bdbac3b478b
-      internalID: 1919339399
+      spriteID: 2255b1f576eaee74a9e5a94bf5e8eae5
+      internalID: -1153017064
       vertices: []
       indices: 
       edges: []
@@ -218,8 +218,8 @@ TextureImporter:
       name: Aggressive Animal_5
       rect:
         serializedVersion: 2
-        x: 88
-        y: 78
+        x: 97
+        y: 77
         width: 26
         height: 21
       alignment: 7
@@ -229,8 +229,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adaba0096d4c56748ab04855eda3480c
-      internalID: -700229518
+      spriteID: c462c32374c63614e8b3d126f0642277
+      internalID: 1743317522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aggressive Animal_6
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 44
+        width: 27
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 289cccd0fdfcda940b0b17ef90d79e25
+      internalID: -1321273484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aggressive Animal_7
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 49
+        width: 31
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bab38fdb8ee145e45acf1bcae0d59fad
+      internalID: -1620645080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aggressive Animal_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 26
+        width: 25
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86cff97760ff6974db47f2d8d3de629c
+      internalID: 1277230962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aggressive Animal_9
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 30
+        width: 32
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa6d15cc79a0b064bad6a8110e6bf641
+      internalID: 628428850
       vertices: []
       indices: 
       edges: []
@@ -246,12 +330,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Aggressive Animal_0: 974810621
-      Aggressive Animal_1: 142896613
-      Aggressive Animal_2: 1254710969
-      Aggressive Animal_3: 483801816
-      Aggressive Animal_4: 1919339399
-      Aggressive Animal_5: -700229518
+      Aggressive Animal_0: 1479610394
+      Aggressive Animal_1: -961428729
+      Aggressive Animal_2: -1199038082
+      Aggressive Animal_3: -26350728
+      Aggressive Animal_4: -1153017064
+      Aggressive Animal_5: 1743317522
+      Aggressive Animal_6: -1321273484
+      Aggressive Animal_7: -1620645080
+      Aggressive Animal_8: 1277230962
+      Aggressive Animal_9: 628428850
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

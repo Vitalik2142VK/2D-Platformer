@@ -1,73 +1,41 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Movement
 {
     private const string Horizontal = nameof(Horizontal);
-    private const string Vertical = nameof(Vertical);
     private const string IsRunning = nameof(IsRunning);
-    private const int RotateByY = 180;
+    private const string IsJumping = nameof(IsJumping);
 
-    [SerializeField] private Animator _animator;
-    [SerializeField, Min(0)] private float _speed;
     [SerializeField, Min(0)] private float _forceJump;
 
-    private Rigidbody2D _playerRigidbody;
     private int _hashIsRunning = Animator.StringToHash(IsRunning);
-    private bool _isDerictionRight = true;
-    private bool _isInAir = false;
+    private int _hashIsJumping = Animator.StringToHash(IsJumping);
 
-    private void Start()
-    {
-        _playerRigidbody = GetComponent<Rigidbody2D>();
-    }
-
-    private void Update()
+    private new void Update()
     {
         Jump();
-        Move();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        _isInAir = false;
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        _isInAir = true;
-    }
-
-    private void Move()
-    {
-        float horizontal = Input.GetAxis(Horizontal);
-
-        if (_isDerictionRight && horizontal < 0)
-        {
-            Flip();
-        }
-        else if (!_isDerictionRight && horizontal > 0)
-        {
-            Flip();
-        }
-
-        _animator.SetBool(_hashIsRunning, horizontal != 0);
-
-        transform.Translate(horizontal * _speed * Time.deltaTime * Vector2.right, Space.World);
-    }
-
-    private void Flip()
-    {
-        _isDerictionRight = !_isDerictionRight;
-
-        transform.Rotate(0, RotateByY, 0);
+        base.Update();
     }
 
     private void Jump()
     {
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && _isInAir == false)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && IsInAir == false)
         {
-            _isInAir = true;
-            _playerRigidbody.velocity = _forceJump * Vector2.up;
+            IsInAir = true;
+            Rigidbody.velocity = _forceJump * Vector2.up;
         }
+
+        Animator.SetBool(_hashIsJumping, IsInAir && Rigidbody.velocity.y > 0);
+    }
+
+    protected override void Move()
+    {
+        float directionByX = Input.GetAxis(Horizontal);
+
+        Flip(directionByX);
+
+        Animator.SetBool(_hashIsRunning, directionByX != 0 && IsInAir == false);
+
+        transform.Translate(directionByX * Speed * Time.deltaTime * Vector2.right, Space.World);
     }
 }
