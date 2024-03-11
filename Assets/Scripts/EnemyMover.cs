@@ -2,7 +2,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyMovement : Movement
+public class EnemyMover : Movement
 {
     private const string IsWalking = nameof(IsWalking);
     private const float MaxWaitingTimeAtPoint = 5;

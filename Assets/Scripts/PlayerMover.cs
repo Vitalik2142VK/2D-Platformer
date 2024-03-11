@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovement : Movement
+public class PlayerMover : Movement
 {
     private const string Horizontal = nameof(Horizontal);
     private const string IsRunning = nameof(IsRunning);
