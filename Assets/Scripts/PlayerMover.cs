@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMover : Movement
+public class PlayerMover : Mover
 {
     private const string Horizontal = nameof(Horizontal);
     private const string IsRunning = nameof(IsRunning);
@@ -11,13 +11,7 @@ public class PlayerMover : Movement
     private int _hashIsRunning = Animator.StringToHash(IsRunning);
     private int _hashIsJumping = Animator.StringToHash(IsJumping);
 
-    private new void Update()
-    {
-        Jump();
-        base.Update();
-    }
-
-    private void Jump()
+    public void Jump()
     {
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && IsInAir == false)
         {
@@ -28,14 +22,14 @@ public class PlayerMover : Movement
         Animator.SetBool(_hashIsJumping, IsInAir && Rigidbody.velocity.y > 0);
     }
 
-    protected override void Move()
+    public override void Move()
     {
-        float directionByX = Input.GetAxis(Horizontal);
+        float directionX = Input.GetAxis(Horizontal);
 
-        Flip(directionByX);
+        Flip(directionX);
 
-        Animator.SetBool(_hashIsRunning, directionByX != 0 && IsInAir == false);
+        Animator.SetBool(_hashIsRunning, directionX != 0 && IsInAir == false);
 
-        transform.Translate(directionByX * Speed * Time.deltaTime * Vector2.right, Space.World);
+        transform.Translate(directionX * Speed * Time.deltaTime * Vector2.right, Space.World);
     }
 }

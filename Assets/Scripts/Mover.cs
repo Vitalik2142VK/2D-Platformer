@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class Movement : MonoBehaviour
+public abstract class Mover : MonoBehaviour
 {
     private const string IsFalling = nameof(IsFalling);
     private const int RotateByY = 180;
@@ -22,15 +22,9 @@ public abstract class Movement : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    protected void Update()
-    {
-        Fall();
-        Move();
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.otherRigidbody == Rigidbody && collision.gameObject.TryGetComponent(out Land land))
+        if (collision.otherRigidbody == Rigidbody && collision.gameObject.TryGetComponent(out Land _))
         {
             IsInAir = false;
         }
@@ -38,29 +32,29 @@ public abstract class Movement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.otherRigidbody == Rigidbody && collision.gameObject.TryGetComponent(out Land land))
+        if (collision.otherRigidbody == Rigidbody && collision.gameObject.TryGetComponent(out Land _))
         {
             IsInAir = true;
         }
     }
 
-    private void Fall()
+    public void Fall()
     {
         _animator.SetBool(_hashIsFalling, IsInAir && Rigidbody.velocity.y < 0);
     }
 
-    protected void Flip(float directionByX)
+    protected void Flip(float directionX)
     {
-        if (directionByX == 0)
+        if (directionX == 0)
             return;
 
-        if (_isDerictionRight == true && directionByX < 0)
+        if (_isDerictionRight == true && directionX < 0)
         {
             _isDerictionRight = false;
 
             transform.Rotate(0, RotateByY, 0);
         } 
-        else if (_isDerictionRight == false && directionByX > 0)
+        else if (_isDerictionRight == false && directionX > 0)
         {
             _isDerictionRight = true;
 
@@ -68,5 +62,5 @@ public abstract class Movement : MonoBehaviour
         }
     }
 
-    protected abstract void Move();
+    public abstract void Move();
 }
