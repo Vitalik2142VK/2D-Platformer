@@ -1,15 +1,14 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyMovement : Movement
+public class EnemyMover : Mover
 {
     private const string IsWalking = nameof(IsWalking);
     private const float MaxWaitingTimeAtPoint = 5;
     private const float MinWaitingTimeAtPoint = 1;
     private const int DefaultIndexPoint = -1;
 
-    [SerializeField] private Waypoint[] _waypoints;
+    [SerializeField] private Transform[] _waypoints;
     [SerializeField] private float _radiusReachingPoint;
     [SerializeField] private bool _routeLooped = true;
 
@@ -27,19 +26,19 @@ public class EnemyMovement : Movement
         base.Start();
     }
 
-    protected override void Move()
+    public override void Move()
     {
         if (_currentIndexPoint != DefaultIndexPoint)
         {
-            Vector2 positionWaypoint = _waypoints[_currentIndexPoint].transform.position;
+            Vector2 positionWaypoint = _waypoints[_currentIndexPoint].position;
             Vector2 previousPosition = transform.position;
             transform.position = Vector2.MoveTowards(transform.position, positionWaypoint, Speed * Time.deltaTime);
 
-            float directionByX = transform.position.x - previousPosition.x;
+            float directionX = transform.position.x - previousPosition.x;
 
-            Flip(directionByX);
+            Flip(directionX);
 
-            Animator.SetBool(_hashIsWalking, directionByX != 0 && IsInAir == false);
+            Animator.SetBool(_hashIsWalking, directionX != 0 && IsInAir == false);
 
             float distance = Vector2.Distance(transform.position, positionWaypoint);
 

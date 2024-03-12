@@ -1688,8 +1688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinPrefab: {fileID: 2461079855583006878, guid: 1f9af1149b8c0614aace37ee9e47bcf2, type: 3}
-  _player: {fileID: 1982243033}
-  _pointsSpawn: {fileID: 1672633253}
+  _containerSpawnPoints: {fileID: 1672633253}
 --- !u!1 &1672633252
 GameObject:
   m_ObjectHideFlags: 0
@@ -5112,11 +5111,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3232650174526180806, guid: aa64fa23c745bfc449b51a674a67509e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: -6.98
       objectReference: {fileID: 0}
     - target: {fileID: 3232650174526180806, guid: aa64fa23c745bfc449b51a674a67509e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.55
+      value: 6.32
       objectReference: {fileID: 0}
     - target: {fileID: 3232650174526180806, guid: aa64fa23c745bfc449b51a674a67509e, type: 3}
       propertyPath: m_LocalPosition.z

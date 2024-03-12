@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CameraMover : MonoBehaviour
 {
     [SerializeField] private Transform _objectObservation;
 
-    void Update()
+    private void Update()
     {
         transform.position = _objectObservation.position;
     }

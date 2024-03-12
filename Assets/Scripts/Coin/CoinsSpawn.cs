@@ -3,16 +3,13 @@ using UnityEngine;
 public class CoinsSpawn : MonoBehaviour
 {
     [SerializeField] private Coin _coinPrefab;
-    [SerializeField] private Player _player;
-    [SerializeField] private Transform _pointsSpawn;
+    [SerializeField] private Transform _containerSpawnPoints;
 
     private void Start()
     {
-        _coinPrefab.SetPlayer(_player);
-
-        for (int i = 0; i < _pointsSpawn.childCount; i++)
+        for (int i = 0; i < _containerSpawnPoints.childCount; i++)
         {
-            SpawnCoin(_pointsSpawn.GetChild(i));
+            SpawnCoin(_containerSpawnPoints.GetChild(i));
         }
     }
 
