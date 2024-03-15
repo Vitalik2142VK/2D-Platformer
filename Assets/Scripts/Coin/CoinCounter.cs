@@ -10,7 +10,7 @@ public class CoinCounter : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.CoinIsTaken += UpdateCount;
+        _player.CoinTaken += UpdateCount;
     }
 
     private void Start()
@@ -20,7 +20,7 @@ public class CoinCounter : MonoBehaviour
 
     private void OnDisable()
     {
-        _player.CoinIsTaken -= UpdateCount;
+        _player.CoinTaken -= UpdateCount;
     }
 
     private void AddOneCoinToCounter()

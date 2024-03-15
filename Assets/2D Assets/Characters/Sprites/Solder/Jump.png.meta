@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0eb870ab8c3e1294281a7d7b48092648
+guid: ed65b4f58c6bbb74da1d1e4986ef5063
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,137 +110,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Solder_0
+      name: Jump_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 46
-        width: 12
-        height: 17
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d31e4dba3830214f952716c9bb466d4
-      internalID: -1916470523
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Solder_1
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 46
-        width: 12
-        height: 17
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 397012f5224f14b47910a72a966d457f
-      internalID: -2084009369
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Solder_2
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 25
-        width: 11
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc668fc2ba822c94c92ecc437a5a8972
-      internalID: -1752591793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Solder_3
-      rect:
-        serializedVersion: 2
-        x: 19
-        y: 25
-        width: 9
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78629a2e5a3a15146b4b5ecd1bd1c5c7
-      internalID: -2058529631
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Solder_4
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 25
-        width: 13
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c61367878f690204aa8e601bb901aa6c
-      internalID: 1070515229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Solder_5
-      rect:
-        serializedVersion: 2
-        x: 50
-        y: 25
-        width: 11
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82a22c5fb76cc0545b657423bea00ae4
-      internalID: -432384367
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Solder_6
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 3
+        x: 1
+        y: 4
         width: 13
         height: 17
       alignment: 7
@@ -250,18 +124,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fe6e84a4b9af8947817a421abbf482b
-      internalID: 1393828468
+      spriteID: 53b83bef6bb3a5042a79a5641d239379
+      internalID: -45591308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Solder_7
+      name: Jump_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 3
+        x: 18
+        y: 4
         width: 13
         height: 15
       alignment: 7
@@ -271,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4492e8905dfbae443a658a543823cda1
-      internalID: -869050571
+      spriteID: e061208c0e1026543bb939da4d0d3bcb
+      internalID: -1343085731
       vertices: []
       indices: 
       edges: []
@@ -288,14 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Solder_0: -1916470523
-      Solder_1: -2084009369
-      Solder_2: -1752591793
-      Solder_3: -2058529631
-      Solder_4: 1070515229
-      Solder_5: -432384367
-      Solder_6: 1393828468
-      Solder_7: -869050571
+      Jump_0: -45591308
+      Jump_1: -1343085731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
