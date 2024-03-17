@@ -1,9 +1,8 @@
 using System;
 using UnityEngine;
 
-public class EnemyFindPlayer : MonoBehaviour
+public class PlayerFinder : MonoBehaviour
 {
-    [SerializeField] private LayerMask _damageLayerMask;
     [SerializeField, Min(1)] private float _timeUpdatePlayerPosition;
 
     public event Action<Player, bool> PlayerFound;

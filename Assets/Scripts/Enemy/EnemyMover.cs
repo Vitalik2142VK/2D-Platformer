@@ -8,7 +8,6 @@ public class EnemyMover : Mover
     private const float MinWaitingTimeAtPoint = 1;
     private const int DefaultIndexPoint = -1;
 
-    [SerializeField] private EnemyFindPlayer _playerSearchArea;
     [SerializeField] private Transform[] _waypoints;
     [SerializeField] private float _radiusReachingPoint;
     [SerializeField] private bool _routeLooped = true;
@@ -18,11 +17,6 @@ public class EnemyMover : Mover
     private int _currentIndexPoint = DefaultIndexPoint;
     private bool _isPointReached = false;
     private bool _isPlayerFound = false;
-
-    private void OnEnable()
-    {
-        _playerSearchArea.PlayerFound += ChangeMoveToPlayer;
-    }
 
     private new void Start()
     {
@@ -34,9 +28,10 @@ public class EnemyMover : Mover
         base.Start();
     }
 
-    private void OnDisable()
+    public void ChangeMoveToPlayer(Player player, bool isPlayingFound)
     {
-        _playerSearchArea.PlayerFound -= ChangeMoveToPlayer;
+        _isPlayerFound = isPlayingFound;
+        _player = player;
     }
 
     public override void Move()
@@ -84,12 +79,6 @@ public class EnemyMover : Mover
         Flip(directionX);
 
         Animator.SetBool(_hashIsWalking, directionX != 0 && IsInAir == false);
-    }
-
-    private void ChangeMoveToPlayer(Player player, bool isPlayingFound)
-    {
-        _isPlayerFound = isPlayingFound;
-        _player = player;
     }
 
     private IEnumerator SpecifyNextPoint()

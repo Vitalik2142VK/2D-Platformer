@@ -10,4 +10,6 @@ public abstract class Character : MonoBehaviour
     {
         _health.TakeDamage(damageAmount);
     }
+
+    protected abstract void Die();
 }

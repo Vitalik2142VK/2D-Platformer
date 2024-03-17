@@ -24,7 +24,7 @@ public abstract class Mover : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.otherRigidbody == Rigidbody && collision.gameObject.TryGetComponent(out Land _))
+        if (collision.otherRigidbody == Rigidbody && collision.gameObject.TryGetComponent(out Ground _))
         {
             IsInAir = false;
         }
@@ -32,7 +32,7 @@ public abstract class Mover : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.otherRigidbody == Rigidbody && collision.gameObject.TryGetComponent(out Land _))
+        if (collision.otherRigidbody == Rigidbody && collision.gameObject.TryGetComponent(out Ground _))
         {
             IsInAir = true;
         }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class MeleeAttack : MonoBehaviour
+public class MeleeAttack : MonoBehaviour
 {
     private const string IsMeleeAttack = nameof(IsMeleeAttack);
 
@@ -10,17 +10,22 @@ public abstract class MeleeAttack : MonoBehaviour
     [SerializeField, Min(0)] private float _attackRange;
     [SerializeField, Min(0)] private float _timeBetweenAttack;
 
+    private Collider2D[] _targets;
     private Animator _animator;
     private float _timer;
     private int _hashIsMeleeAttack = Animator.StringToHash(IsMeleeAttack);
 
-    protected Animator Animator => _animator;
-    protected float Damage => _damage;
-    protected int HashIsMeleeAttack => _hashIsMeleeAttack;
-
     private void Start()
     {
         AssignComponents();
+    }
+
+    private void Update()
+    {
+        if (_timer > 0)
+        {
+            _timer -= Time.deltaTime;
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -29,15 +34,18 @@ public abstract class MeleeAttack : MonoBehaviour
         Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
     }
 
+    public bool IsFoundTargets()
+    {
+        _targets = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _damageLayerMask);
+
+        return _targets.Length > 0;
+    }
+
     public void Attack()
     {
         if (_timer <= 0) 
         {
             AttackTargets();
-        }
-        else
-        {
-            _timer -= Time.deltaTime;
         }
     }
 
@@ -45,16 +53,19 @@ public abstract class MeleeAttack : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
-    
-    protected Collider2D[] GetEnemies()
-    {
-        return Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _damageLayerMask);
-    }
 
-    protected void UpdateTimer()
+    private void AttackTargets()
     {
+        _animator.SetTrigger(_hashIsMeleeAttack);
+
+        if (_targets.Length > 0)
+        {
+            foreach (var target in _targets)
+            {
+                target.GetComponent<Health>().TakeDamage(_damage);
+            }
+        }
+
         _timer = _timeBetweenAttack;
     }
-
-    protected abstract void AttackTargets();
 }

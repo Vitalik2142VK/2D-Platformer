@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class Health : MonoBehaviour
+public class Health : MonoBehaviour
 {
     [SerializeField, Min(0)] private float _maxCountHealth;
 
@@ -32,18 +32,21 @@ public abstract class Health : MonoBehaviour
             CurrentHealth -= damageAmount;
         }
 
-        RunEventHealthChange();
+        HealthChange?.Invoke(CurrentHealth);
+    }
+
+    public void RestoreHealth(float health)
+    {
+        if (CurrentHealth + health > MaxCountHealth)
+            CurrentHealth = MaxCountHealth;
+        else
+            CurrentHealth += health;
+
+        HealthChange?.Invoke(CurrentHealth);
     }
 
     protected void EstablishMaxHealth()
     {
         CurrentHealth = _maxCountHealth;
     }
-
-    protected void RunEventHealthChange()
-    {
-        HealthChange?.Invoke(CurrentHealth);
-    }
-
-    public abstract void Remove();
 }

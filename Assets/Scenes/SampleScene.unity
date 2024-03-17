@@ -2396,17 +2396,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4968383777756707176, guid: d40808997ba40ed43b26eebcd166f2da, type: 3}
-      propertyPath: _damage
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5403987784800623657, guid: d40808997ba40ed43b26eebcd166f2da, type: 3}
       propertyPath: m_Name
       value: AggressiveAnimal
-      objectReference: {fileID: 0}
-    - target: {fileID: 9191069499329643859, guid: d40808997ba40ed43b26eebcd166f2da, type: 3}
-      propertyPath: _waypoints.Array.size
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9191069499329643859, guid: d40808997ba40ed43b26eebcd166f2da, type: 3}
       propertyPath: _waypoints.Array.data[0]
@@ -2414,14 +2406,6 @@ PrefabInstance:
       objectReference: {fileID: 1327526760}
     - target: {fileID: 9191069499329643859, guid: d40808997ba40ed43b26eebcd166f2da, type: 3}
       propertyPath: _waypoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 1017825270}
-    - target: {fileID: 9191069499329643859, guid: d40808997ba40ed43b26eebcd166f2da, type: 3}
-      propertyPath: _waypoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 1327526760}
-    - target: {fileID: 9191069499329643859, guid: d40808997ba40ed43b26eebcd166f2da, type: 3}
-      propertyPath: _waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 1017825270}
     m_RemovedComponents: []

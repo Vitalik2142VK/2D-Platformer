@@ -8,13 +8,6 @@ public class Player : Character
 
     public event Action CoinTaken;
 
-    private new PlayerHealth Health;
-
-    private void Awake()
-    {
-        Health = (PlayerHealth)base.Health;
-    }
-
     private void OnEnable()
     {
         Health.HealthOver += Die;
@@ -27,7 +20,7 @@ public class Player : Character
             _playerMover.Fall();
             _playerMover.Jump();
             _playerMover.Move();
-            _attack.Attack();
+            Attack();
         }  
     }
 
@@ -48,8 +41,17 @@ public class Player : Character
         Health.HealthOver -= Die;
     }
 
-    private void Die()
+    private void Attack()
     {
-        Health.Remove();
+        if (Input.GetKey(KeyCode.Space))
+        {
+            _attack.IsFoundTargets();
+            _attack.Attack();
+        }
+    }
+
+    protected override void Die()
+    {
+        Debug.Log("You dead");
     }
 }

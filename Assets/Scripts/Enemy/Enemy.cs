@@ -1,16 +1,22 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Enemy : Character
 {
     private const string IsDying = nameof(IsDying);
 
-    [SerializeField] private Mover _enemyMover;
+    [SerializeField] private EnemyMover _enemyMover;
     [SerializeField] private MeleeAttack _attack;
+    [SerializeField] private PlayerFinder _playerSearchArea;
+    [SerializeField, Min(0)] private float _timeDelete = 5;
 
+    private WaitForSeconds _wait;
     private int _hashIsDying = Animator.StringToHash(IsDying);
 
     private void OnEnable()
     {
+        _playerSearchArea.PlayerFound += ChangeMove;
+
         Health.HealthOver += Remove;
     }
 
@@ -20,13 +26,27 @@ public class Enemy : Character
         {
             _enemyMover.Fall();
             _enemyMover.Move();
-            _attack.Attack();
+
+            Attack();
         } 
     }
 
     private void OnDisable()
     {
+        _playerSearchArea.PlayerFound -= ChangeMove;
+
         Health.HealthOver -= Remove;
+    }
+
+    private void Attack()
+    {
+        if (_attack.IsFoundTargets())
+            _attack.Attack();
+    }
+
+    private void ChangeMove(Player player, bool isPlayingFound)
+    {
+        _enemyMover.ChangeMoveToPlayer(player, isPlayingFound);
     }
 
     private void Remove()
@@ -39,6 +59,23 @@ public class Enemy : Character
         Animator animator = GetComponent<Animator>();
         animator.SetTrigger(_hashIsDying);
 
-        Health.Remove();
+        Die();
+    }
+
+    private IEnumerator RemoveAfterWhile()
+    {
+        yield return _wait;
+
+        Destroy(gameObject);
+    }
+
+    protected override void Die()
+    {
+        GetComponent<Collider2D>().enabled = false;
+        GetComponent<Rigidbody2D>().simulated = false;
+
+
+        _wait = new WaitForSeconds(_timeDelete);
+        StartCoroutine(RemoveAfterWhile());
     }
 }

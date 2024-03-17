@@ -46,8 +46,8 @@ GameObject:
   - component: {fileID: 2754700888716902505}
   - component: {fileID: 3808887280170041623}
   - component: {fileID: 9191069499329643859}
-  - component: {fileID: 1035492270419240158}
-  - component: {fileID: 4968383777756707176}
+  - component: {fileID: 5826769403985426449}
+  - component: {fileID: 8493570090736586109}
   m_Layer: 6
   m_Name: AggressiveAnimal
   m_TagString: Enemy
@@ -64,7 +64,7 @@ Transform:
   m_GameObject: {fileID: 5403987784800623657}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.98, y: 6.21, z: 0}
+  m_LocalPosition: {x: -7.05, y: 6.29, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -229,9 +229,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68376657d4168154099258772254240e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 1035492270419240158}
+  _health: {fileID: 5826769403985426449}
   _enemyMover: {fileID: 9191069499329643859}
-  _attack: {fileID: 4968383777756707176}
+  _attack: {fileID: 8493570090736586109}
+  _playerSearchArea: {fileID: 515528942913749919}
+  _timeDelete: 5
 --- !u!114 &9191069499329643859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,13 +248,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 97000691130706897}
   _speed: 3
-  _playerSearchArea: {fileID: 515528942913749919}
   _waypoints:
   - {fileID: 0}
   - {fileID: 0}
   _radiusReachingPoint: 1
   _routeLooped: 1
---- !u!114 &1035492270419240158
+--- !u!114 &5826769403985426449
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -261,12 +262,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5403987784800623657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2408d51bf728c5e4985c070598cd550e, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fa5deac8a214ed4d9a7aa2830ce9f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxCountHealth: 40
-  _timeDelete: 5
---- !u!114 &4968383777756707176
+--- !u!114 &8493570090736586109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5403987784800623657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 920cfa8eb10088d4db0d6fb749fe2395, type: 3}
+  m_Script: {fileID: 11500000, guid: 18a895c2ae8d5c54faf39ba38ce29630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _attackPoint: {fileID: 1260735592444127273}
@@ -283,7 +283,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _damage: 10
-  _attackRange: 0.75
+  _attackRange: 0.6
   _timeBetweenAttack: 2
 --- !u!1 &8125908619318702490
 GameObject:
@@ -380,7 +380,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7991d867ff5713944aa9160edafa44ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  _timeUpdatePlayerPosition: 3
+  _timeUpdatePlayerPosition: 1
