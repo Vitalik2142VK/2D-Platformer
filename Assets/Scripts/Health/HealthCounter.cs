@@ -1,13 +1,18 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HealthCounter : MonoBehaviour
 {
-    [SerializeField] private Health _health;
-    [SerializeField] private Text _counterOutput;
+    [SerializeField] private TextMeshProUGUI _counterOutput;
 
+    private Health _health;
     private float _maxHealth;
     private float _currentHealth;
+
+    private void Awake()
+    {
+        _health = GetComponent<Health>();
+    }
 
     private void OnEnable()
     {

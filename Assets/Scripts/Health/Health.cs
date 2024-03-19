@@ -11,11 +11,11 @@ public class Health : MonoBehaviour
     public float MaxCountHealth => _maxCountHealth;
     public bool IsAlive { get; protected set; } = true;
 
-    protected float CurrentHealth { get; set; }
+    public float CurrentHealth { get; private set; }
 
     protected void Start()
     {
-        EstablishMaxHealth();
+        CurrentHealth = _maxCountHealth;
     }
 
     public void TakeDamage(float damageAmount)
@@ -43,10 +43,5 @@ public class Health : MonoBehaviour
             CurrentHealth += health;
 
         HealthChange?.Invoke(CurrentHealth);
-    }
-
-    protected void EstablishMaxHealth()
-    {
-        CurrentHealth = _maxCountHealth;
     }
 }
