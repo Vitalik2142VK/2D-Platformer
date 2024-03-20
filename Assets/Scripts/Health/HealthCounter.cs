@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(Health))]
 public class HealthCounter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _counterOutput;

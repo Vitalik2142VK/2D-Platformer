@@ -20,27 +20,21 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        if (CurrentHealth <= damageAmount)
+        CurrentHealth = Mathf.Clamp(CurrentHealth - damageAmount, 0.0f, _maxCountHealth);
+
+        if (CurrentHealth == 0)
         {
-            CurrentHealth = 0;
             IsAlive = false;
 
             HealthOver?.Invoke();
         }
-        else
-        {
-            CurrentHealth -= damageAmount;
-        }
-
+            
         HealthChange?.Invoke(CurrentHealth);
     }
 
     public void RestoreHealth(float health)
     {
-        if (CurrentHealth + health > MaxCountHealth)
-            CurrentHealth = MaxCountHealth;
-        else
-            CurrentHealth += health;
+        CurrentHealth = Mathf.Clamp(CurrentHealth + health, 0.0f, _maxCountHealth);
 
         HealthChange?.Invoke(CurrentHealth);
     }
