@@ -7,11 +7,6 @@ public class SmoothHealthBar : HealthBar
     private float _targetHealth;
     private bool _isSmoothnessEnabled = false;
 
-    private new void Awake()
-    {
-        base.Awake();
-    }
-
     private void Start()
     {
         _targetHealth = Health.MaxCountHealth;
@@ -33,7 +28,7 @@ public class SmoothHealthBar : HealthBar
         }
     }
 
-    protected override void UpdateValueHealthBar(float health)
+    protected override void OnUpdateValue(float health)
     {
         _targetHealth = health;
         _isSmoothnessEnabled = true;

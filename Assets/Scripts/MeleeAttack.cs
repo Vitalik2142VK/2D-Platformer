@@ -1,37 +1,43 @@
 using UnityEngine;
 
+[RequireComponent (typeof(Animator))]
 public class MeleeAttack : MonoBehaviour
 {
-    private const string IsMeleeAttack = nameof(IsMeleeAttack);
+    private readonly int IsMeleeAttack = Animator.StringToHash(nameof(IsMeleeAttack));
 
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private LayerMask _damageLayerMask;
     [SerializeField, Min(0)] private float _damage;
     [SerializeField, Min(0)] private float _attackRange;
     [SerializeField, Min(0)] private float _timeBetweenAttack;
+    [SerializeField] private bool _isRangeAreaEnabled;
 
     private Collider2D[] _targets;
     private Animator _animator;
-    private float _timer;
-    private int _hashIsMeleeAttack = Animator.StringToHash(IsMeleeAttack);
+    private Timer _timer;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
-        AssignComponents();
+        _timer = new Timer(_timeBetweenAttack);
     }
 
     private void Update()
     {
-        if (_timer > 0)
-        {
-            _timer -= Time.deltaTime;
-        }
+        _timer.MakeCountdown();
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
+        if (_isRangeAreaEnabled)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
+        }
     }
 
     public bool IsFoundTargets()
@@ -43,20 +49,17 @@ public class MeleeAttack : MonoBehaviour
 
     public void Attack()
     {
-        if (_timer <= 0) 
+        if (_timer.IsTimeUp) 
         {
             AttackTargets();
-        }
-    }
 
-    private void AssignComponents()
-    {
-        _animator = GetComponent<Animator>();
+            _timer.UpdateWaitingTime();
+        }
     }
 
     private void AttackTargets()
     {
-        _animator.SetTrigger(_hashIsMeleeAttack);
+        _animator.SetTrigger(IsMeleeAttack);
 
         if (_targets.Length > 0)
         {
@@ -65,7 +68,5 @@ public class MeleeAttack : MonoBehaviour
                 target.GetComponent<Health>().TakeDamage(_damage);
             }
         }
-
-        _timer = _timeBetweenAttack;
     }
 }

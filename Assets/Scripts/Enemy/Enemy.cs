@@ -10,14 +10,13 @@ public class Enemy : Character
     [SerializeField] private PlayerFinder _playerSearchArea;
     [SerializeField, Min(0)] private float _timeDelete = 5;
 
-    private WaitForSeconds _wait;
     private int _hashIsDying = Animator.StringToHash(IsDying);
 
     private void OnEnable()
     {
         _playerSearchArea.PlayerFound += ChangeMove;
 
-        Health.HealthOver += Remove;
+        Health.Over += Remove;
     }
 
     private void Update()
@@ -35,7 +34,7 @@ public class Enemy : Character
     {
         _playerSearchArea.PlayerFound -= ChangeMove;
 
-        Health.HealthOver -= Remove;
+        Health.Over -= Remove;
     }
 
     private void Attack()
@@ -64,7 +63,7 @@ public class Enemy : Character
 
     private IEnumerator RemoveAfterWhile()
     {
-        yield return _wait;
+        yield return new WaitForSeconds(_timeDelete);
 
         Destroy(gameObject);
     }
@@ -74,8 +73,6 @@ public class Enemy : Character
         GetComponent<Collider2D>().enabled = false;
         GetComponent<Rigidbody2D>().simulated = false;
 
-
-        _wait = new WaitForSeconds(_timeDelete);
         StartCoroutine(RemoveAfterWhile());
     }
 }

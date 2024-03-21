@@ -735,8 +735,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc5175225b1b194bb5ce22d22350975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 128
   _animator: {fileID: 555651241531690543}
   _speed: 3
+  _activationRadiusGround: 0.35
+  _isRadiusAreaEnabled: 0
   _waypoints:
   - {fileID: 0}
   - {fileID: 0}

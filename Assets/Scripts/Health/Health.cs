@@ -5,11 +5,11 @@ public class Health : MonoBehaviour
 {
     [SerializeField, Min(0)] private float _maxCountHealth;
 
-    public event Action HealthOver;
-    public event Action<float> HealthChange;
+    public event Action Over;
+    public event Action<float> Change;
 
     public float MaxCountHealth => _maxCountHealth;
-    public bool IsAlive { get; protected set; } = true;
+    public bool IsAlive => CurrentHealth > 0;
 
     public float CurrentHealth { get; private set; }
 
@@ -20,22 +20,24 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        CurrentHealth = Mathf.Clamp(CurrentHealth - damageAmount, 0.0f, _maxCountHealth);
+        float currentHealth = CurrentHealth - damageAmount;
 
-        if (CurrentHealth == 0)
+        CurrentHealth = Mathf.Clamp(currentHealth, 0.0f, _maxCountHealth);
+
+        if (IsAlive == false)
         {
-            IsAlive = false;
-
-            HealthOver?.Invoke();
+            Over?.Invoke();
         }
             
-        HealthChange?.Invoke(CurrentHealth);
+        Change?.Invoke(CurrentHealth);
     }
 
     public void RestoreHealth(float health)
     {
-        CurrentHealth = Mathf.Clamp(CurrentHealth + health, 0.0f, _maxCountHealth);
+        float currentHealth = CurrentHealth + health;
 
-        HealthChange?.Invoke(CurrentHealth);
+        CurrentHealth = Mathf.Clamp(currentHealth, 0.0f, _maxCountHealth);
+
+        Change?.Invoke(CurrentHealth);
     }
 }

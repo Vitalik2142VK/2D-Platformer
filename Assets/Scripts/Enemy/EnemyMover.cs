@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class EnemyMover : Mover
 {
-    private const string IsWalking = nameof(IsWalking);
+    private readonly int IsWalking = Animator.StringToHash(nameof(IsWalking));
+
     private const float MaxWaitingTimeAtPoint = 5;
     private const float MinWaitingTimeAtPoint = 1;
     private const int DefaultIndexPoint = -1;
@@ -13,19 +14,16 @@ public class EnemyMover : Mover
     [SerializeField] private bool _routeLooped = true;
 
     private Player _player;
-    private int _hashIsWalking = Animator.StringToHash(IsWalking);
     private int _currentIndexPoint = DefaultIndexPoint;
     private bool _isPointReached = false;
     private bool _isPlayerFound = false;
 
-    private new void Start()
+    private void Start()
     {
         if (_waypoints.Length != 0)
         {
             _currentIndexPoint = 0;
         }
-
-        base.Start();
     }
 
     public void ChangeMoveToPlayer(Player player, bool isPlayingFound)
@@ -78,7 +76,7 @@ public class EnemyMover : Mover
 
         Flip(directionX);
 
-        Animator.SetBool(_hashIsWalking, directionX != 0 && IsInAir == false);
+        Animator.SetBool(IsWalking, directionX != 0 && IsGrounded);
     }
 
     private IEnumerator SpecifyNextPoint()

@@ -10,7 +10,7 @@ public class Player : Character
 
     private void OnEnable()
     {
-        Health.HealthOver += Die;
+        Health.Over += Die;
     }
 
     private void Update()
@@ -38,7 +38,7 @@ public class Player : Character
 
     private void OnDisable()
     {
-        Health.HealthOver -= Die;
+        Health.Over -= Die;
     }
 
     private void Attack()

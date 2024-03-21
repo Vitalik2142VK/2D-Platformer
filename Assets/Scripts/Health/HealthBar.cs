@@ -21,7 +21,7 @@ public abstract class HealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.HealthChange += UpdateValueHealthBar;
+        _health.Change += OnUpdateValue;
     }
 
     private void LateUpdate()
@@ -32,8 +32,8 @@ public abstract class HealthBar : MonoBehaviour
 
     private void OnDisable()
     {
-        _health.HealthChange -= UpdateValueHealthBar;
+        _health.Change -= OnUpdateValue;
     }
 
-    protected abstract void UpdateValueHealthBar(float health);
+    protected abstract void OnUpdateValue(float health);
 }
