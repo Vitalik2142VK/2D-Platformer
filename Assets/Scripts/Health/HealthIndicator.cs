@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
-public class HealthCounter : MonoBehaviour
+public class HealthIndicator : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _counterOutput;
 
@@ -17,7 +17,7 @@ public class HealthCounter : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.HealthChange += UpdateCount;
+        _health.Change += OnUpdateCount;
     }
 
     private void Start()
@@ -33,7 +33,7 @@ public class HealthCounter : MonoBehaviour
 
     private void OnDisable()
     {
-        _health.HealthChange -= UpdateCount;
+        _health.Change -= OnUpdateCount;
     }
 
     private void ChangeCountHealth(float currentHelath)
@@ -46,7 +46,7 @@ public class HealthCounter : MonoBehaviour
         _counterOutput.text = $"{_currentHealth} / {_maxHealth}";
     }
 
-    private void UpdateCount(float currentHelath)
+    private void OnUpdateCount(float currentHelath)
     {
         ChangeCountHealth(currentHelath);
         OutputCountHealth();

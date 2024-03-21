@@ -1,6 +1,6 @@
 public class SharpHealthBar : HealthBar
 {
-    protected override void UpdateValueHealthBar(float health)
+    protected override void OnUpdateValue(float health)
     {
         HealthScale.value = health;
     }

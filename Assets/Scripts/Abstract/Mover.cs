@@ -1,46 +1,49 @@
 ﻿using UnityEngine;
 
+[RequireComponent (typeof(Rigidbody2D))]
 public abstract class Mover : MonoBehaviour
 {
     private const string IsFalling = nameof(IsFalling);
-    private const int RotateByY = 180;
+    private const int RotateY = 180;
 
+    [SerializeField] private LayerMask _layerMask;
     [SerializeField] private Animator _animator;
     [SerializeField, Min(0)] private float _speed;
+    [SerializeField] private float _activationRadiusGround;
+    [SerializeField] private bool _isRadiusAreaEnabled;
 
     private int _hashIsFalling = Animator.StringToHash(IsFalling);
     private bool _isDerictionRight = true;
 
     protected Rigidbody2D Rigidbody;
-    protected bool IsInAir = false;
+
+    public bool IsGrounded { get; private set; }
 
     protected Animator Animator => _animator;
     protected float Speed => _speed;
 
-    protected void Start()
+    private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnDrawGizmosSelected()
     {
-        if (collision.otherRigidbody == Rigidbody && collision.gameObject.TryGetComponent(out Ground _))
+        if (_isRadiusAreaEnabled)
         {
-            IsInAir = false;
+             Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, _activationRadiusGround);
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void FixedUpdate()
     {
-        if (collision.otherRigidbody == Rigidbody && collision.gameObject.TryGetComponent(out Ground _))
-        {
-            IsInAir = true;
-        }
+        IsGrounded = IsOnGround();
     }
 
     public void Fall()
     {
-        _animator.SetBool(_hashIsFalling, IsInAir && Rigidbody.velocity.y < 0);
+        _animator.SetBool(_hashIsFalling, IsGrounded == false && Rigidbody.velocity.y < 0);
     }
 
     protected void Flip(float directionX)
@@ -49,17 +52,21 @@ public abstract class Mover : MonoBehaviour
             return;
 
         if (_isDerictionRight == true && directionX < 0)
-        {
-            _isDerictionRight = false;
-
-            transform.Rotate(0, RotateByY, 0);
-        } 
+            RotateByY();
         else if (_isDerictionRight == false && directionX > 0)
-        {
-            _isDerictionRight = true;
+            RotateByY();
+    }
 
-            transform.Rotate(0, RotateByY, 0);
-        }
+    private void RotateByY()
+    {
+        _isDerictionRight = !_isDerictionRight;
+
+        transform.Rotate(0, RotateY, 0);
+    }
+
+    private bool IsOnGround()
+    {
+        return Physics2D.OverlapCircle(transform.position, _activationRadiusGround, _layerMask.value);
     }
 
     public abstract void Move();

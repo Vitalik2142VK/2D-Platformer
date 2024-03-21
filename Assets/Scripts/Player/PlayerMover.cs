@@ -13,13 +13,12 @@ public class PlayerMover : Mover
 
     public void Jump()
     {
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && IsInAir == false)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && IsGrounded)
         {
-            IsInAir = true;
             Rigidbody.velocity = _forceJump * Vector2.up;
         }
 
-        Animator.SetBool(_hashIsJumping, IsInAir && Rigidbody.velocity.y > 0);
+        Animator.SetBool(_hashIsJumping, IsGrounded == false && Rigidbody.velocity.y > 0);
     }
 
     public override void Move()
@@ -28,7 +27,7 @@ public class PlayerMover : Mover
 
         Flip(directionX);
 
-        Animator.SetBool(_hashIsRunning, directionX != 0 && IsInAir == false);
+        Animator.SetBool(_hashIsRunning, directionX != 0 && IsGrounded);
 
         transform.Translate(directionX * Speed * Time.deltaTime * Vector2.right, Space.World);
     }
