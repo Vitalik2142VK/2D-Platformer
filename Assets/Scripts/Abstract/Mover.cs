@@ -31,7 +31,7 @@ public abstract class Mover : MonoBehaviour
     {
         if (_isRadiusAreaEnabled)
         {
-             Gizmos.color = Color.blue;
+            Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, _activationRadiusGround);
         }
     }
